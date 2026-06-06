@@ -465,6 +465,7 @@ a { color: inherit; }
     gap: 12px;
     top: 6px;
   }
+  .bb-left { flex: 0 0 auto; }
   .bb-right { margin-left: 0; width: 100%; }
   .bb-right .btn-reset, .bb-right .btn-receipt { flex: 1; justify-content: center; }
 
