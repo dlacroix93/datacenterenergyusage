@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/energy",  "destination": "/index.html" },
+    { "source": "/water",   "destination": "/index.html" },
+    { "source": "/sources", "destination": "/index.html" }
+  ]
+}
