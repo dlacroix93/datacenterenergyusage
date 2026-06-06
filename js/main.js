@@ -454,7 +454,7 @@ function updateTotals(tabKey) {
           height: '36',
           onerror: function() { this.style.display = 'none'; },
         }),
-        h('span', { class: 'rname' }, it.name, ' ', h('small', null, '× ' + q.toLocaleString('en-US'))),
+        h('span', { class: 'rname' }, it.name, ' ', h('small', null, '× ' + q.toLocaleString('en-US') + ' (' + fmtVal(t.unit, it.val) + ' each)')),
         h('span', { class: 'ramt' }, fmtVal(t.unit, q * it.val))
       ));
     }
@@ -597,7 +597,7 @@ async function generateReceiptCanvas(tabKey) {
 
       ctx.font       = '400 12px Rubik, sans-serif';
       ctx.fillStyle  = 'rgba(28,27,25,0.45)';
-      ctx.fillText(` × ${q.toLocaleString('en-US')}`, PAD + nameW + 3, y);
+      ctx.fillText(` × ${q.toLocaleString('en-US')} (${fmtVal(t.unit, it.val)} each)`, PAD + nameW + 3, y);
 
       ctx.textAlign  = 'right';
       ctx.font       = 'bold 13px Rubik, sans-serif';

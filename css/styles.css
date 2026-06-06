@@ -482,5 +482,5 @@ a { color: inherit; }
 
 @media (max-width: 400px) {
   .grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-  .buysell .qty { width: 44px; flex: 0 0 44px; font-size: 14px; }
+  .buysell .qty { width: 44px; flex: 0 0 44px; font-size: 16px; }
 }
