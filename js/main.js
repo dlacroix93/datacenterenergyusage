@@ -46,7 +46,7 @@ const TABS = {
     remainWord: 'REMAINING',
     buyLabel: 'BUY',
     sellLabel: 'SELL',
-    sub: "This year's total data-center electricity bill is $61,837,500,000. Go spend it — every last dollar.",
+    sub: "This year's total data-center electricity bill is $61,837,500,000. Go spend it. Every last dollar.",
     receiptTitle: '🧾 RECEIPT',
     rsub: 'what you bought with the power bill',
     items: [
@@ -97,7 +97,7 @@ const TABS = {
     remainWord: 'LEFT',
     buyLabel: 'FILL',
     sellLabel: 'DRAIN',
-    sub: "Data centers drink about 163.9 billion gallons a year to stay cool — roughly 449 million every day. Start filling things up.",
+    sub: "Data centers drink about 163.9 billion gallons a year to stay cool. Roughly 449 million every day. Start filling things up.",
     receiptTitle: '🧾 RECEIPT',
     rsub: 'what you filled with the water',
     items: [
@@ -217,7 +217,7 @@ function buildMasthead() {
 }
 
 function getSubhead(tab) {
-  if (tab === 'sources') return 'Where every number on this page comes from — global figures, back-of-envelope math.';
+  if (tab === 'sources') return 'Where every number on this page comes from: global figures, back-of-envelope math.';
   return TABS[tab].sub;
 }
 
@@ -462,7 +462,7 @@ function updateTotals(tabKey) {
 
   if (refs.rbody) {
     refs.rbody.innerHTML = '';
-    if (rows.length === 0) refs.rbody.append(h('div', { class: 'rempty' }, 'Nothing yet — start buying!'));
+    if (rows.length === 0) refs.rbody.append(h('div', { class: 'rempty' }, 'Nothing yet. Start buying!'));
     else rows.forEach(r => refs.rbody.append(r));
   }
   if (refs.rtotal) refs.rtotal.textContent = fmtVal(t.unit, total);
@@ -482,7 +482,7 @@ function progLabel(pct, goal) {
   if (pct <= 0)  return 'Nothing spent yet.';
   if (pct < 1)   return pct.toFixed(4) + '% of ' + goal + '.';
   if (pct < 100) return pct.toFixed(2) + '% of ' + goal + '.';
-  return Math.round(pct).toLocaleString('en-US') + '% of ' + goal + ' — ...that escalated quickly.';
+  return Math.round(pct).toLocaleString('en-US') + '% of ' + goal + '. That escalated quickly.';
 }
 
 /* ===================================================================
@@ -582,7 +582,7 @@ async function generateReceiptCanvas(tabKey) {
     ctx.font = '15px "Architects Daughter", cursive';
     ctx.fillStyle = 'rgba(28,27,25,0.42)';
     ctx.textAlign = 'center';
-    ctx.fillText('Nothing yet — start buying!', W / 2, y + 22);
+    ctx.fillText('Nothing yet. Start buying!', W / 2, y + 22);
     y += 50;
   } else {
     items.forEach(it => {
@@ -699,9 +699,9 @@ function shareToReddit(tabKey) {
   if (pct < 0.0001) {
     title = 'AI data centers burn $169 million in electricity every single day. This tool shows you what that money could buy instead.';
   } else if (tabKey === 'water') {
-    title = `Data centers use 163.9 billion gallons of water per year. I just "filled" ${pct}% of it — see what it looks like.`;
+    title = `Data centers use 163.9 billion gallons of water per year. I just "filled" ${pct}% of it. See what it looks like.`;
   } else {
-    title = `Data centers spend $61.8B on electricity per year. I just "spent" ${fmtUSD(total)} (${pct}%) of it — see what that buys.`;
+    title = `Data centers spend $61.8B on electricity per year. I just "spent" ${fmtUSD(total)} (${pct}%) of it. See what that buys.`;
   }
   const href = `https://reddit.com/submit?url=${encodeURIComponent(SHARE_URL)}&title=${encodeURIComponent(title)}`;
   window.open(href, '_blank', 'noopener,noreferrer,width=900,height=700');
@@ -715,9 +715,9 @@ function shareText(tabKey) {
   const total = tabTotal(tabKey);
   const pct = (total / t.budget * 100).toFixed(4);
   if (tabKey === 'water') {
-    return `I just "used" ${fmtVal('gal', total)} of data centers' 163.9-billion-gallon-a-year water habit — ${pct}% of it. See where the rest goes:`;
+    return `I just "used" ${fmtVal('gal', total)} of data centers' 163.9-billion-gallon-a-year water habit (${pct}% of it). See where the rest goes:`;
   }
-  return `I just spent ${fmtUSD(total)} of data centers' $61.84B yearly electricity bill — ${pct}% of it. See where the rest goes:`;
+  return `I just spent ${fmtUSD(total)} of data centers' $61.84B yearly electricity bill (${pct}% of it). See where the rest goes:`;
 }
 
 function shareTo(tabKey, network) {
@@ -748,10 +748,10 @@ function buildSources() {
     h('p', { class: 'src-lead' }, 'Every figure on this page is global and back-of-envelope. Here is exactly where each one comes from.'),
 
     srcItem('485 TWh',
-      'Global data-center electricity consumption in 2025. Source: ' + a('https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary', 'IEA — Key Questions on Energy and AI, April 2026') + '.'),
+      'Global data-center electricity consumption in 2025. Source: ' + a('https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary', 'IEA: Key Questions on Energy and AI, April 2026') + '.'),
 
     srcItem('$0.1275 / kWh',
-      'US average commercial electricity rate, used as the cost basis for data-center power. Source: ' + a('https://www.eia.gov/electricity/sales_revenue_price/pdf/table_4.pdf', 'EIA — Electric Power Monthly, Table 4 (commercial rate)') + '.',
+      'US average commercial electricity rate, used as the cost basis for data-center power. Source: ' + a('https://www.eia.gov/electricity/sales_revenue_price/pdf/table_4.pdf', 'EIA: Electric Power Monthly, Table 4 (commercial rate)') + '.',
       'Industrial contracts often run lower and residential higher; actual data-center rates vary by region and negotiation.'),
 
     h('div', { class: 'calc' },
@@ -762,12 +762,12 @@ function buildSources() {
     ),
 
     srcItem('163.9B gallons / year',
-      'Data-center water consumption: 449 million gallons per day (EESI) × 365 = 163,885,000,000 gallons / year. Source: ' + a('https://www.eesi.org/articles/view/data-centers-and-water-consumption', 'EESI — Data Centers and Water Consumption') + '.'),
+      'Data-center water consumption: 449 million gallons per day (EESI) × 365 = 163,885,000,000 gallons / year. Source: ' + a('https://www.eesi.org/articles/view/data-centers-and-water-consumption', 'EESI: Data Centers and Water Consumption') + '.'),
 
     h('div', { class: 'bignote' },
-      'All figures represent global data centers broadly, not AI specifically. AI-focused data centers consumed approximately 155 TWh in 2025 (IEA) — roughly one-third of the total.'),
+      'All figures represent global data centers broadly, not AI specifically. AI-focused data centers consumed approximately 155 TWh in 2025 (IEA), roughly one-third of the total.'),
 
-    h('p', { class: 'footnote' }, '— numbers are illustrative —')
+    h('p', { class: 'footnote' }, 'numbers are illustrative')
   );
 }
 
@@ -798,7 +798,7 @@ function buildFooter() {
     ),
     h('p', { class: 'footer-desc' },
       'Data Center Energy Usage is an interactive tool for visualizing global data center electricity and water consumption. ' +
-      'Explore what the $61.8 billion annual electricity bill — or 163.9 billion gallons of water — could buy in real-world terms. ' +
+      'Explore what the $61.8 billion annual electricity bill (or 163.9 billion gallons of water) could buy in real-world terms. ' +
       'All figures represent global data centers broadly, based on IEA and EESI data.'
     )
   );
