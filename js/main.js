@@ -144,8 +144,13 @@ const TABS = {
 /* ---------- state ---------- */
 const state = { tab: 'energy', qty: { energy: {}, water: {} } };
 try {
-  const s = JSON.parse(localStorage.getItem('dceu') || '{}');
-  if (['energy', 'water', 'sources'].includes(s.tab)) state.tab = s.tab;
+  const hash = window.location.hash.replace('#', '');
+  if (['energy', 'water', 'sources'].includes(hash)) {
+    state.tab = hash;
+  } else {
+    const s = JSON.parse(localStorage.getItem('dceu') || '{}');
+    if (['energy', 'water', 'sources'].includes(s.tab)) state.tab = s.tab;
+  }
 } catch (e) {}
 
 function persist() { localStorage.setItem('dceu', JSON.stringify({ tab: state.tab })); }
@@ -241,6 +246,7 @@ function switchTab(key, save = true) {
     if (state.tab === key) return;
     state.tab = key;
     persist();
+    window.location.hash = key;
   }
 
   const subhead = document.getElementById('subhead');
