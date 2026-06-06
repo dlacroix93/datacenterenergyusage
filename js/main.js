@@ -777,7 +777,7 @@ function buildSources() {
       'Data-center water consumption: 449 million gallons per day (EESI) × 365 = 163,885,000,000 gallons / year. Source: ' + a('https://www.eesi.org/articles/view/data-centers-and-water-consumption', 'EESI: Data Centers and Water Consumption') + '.'),
 
     h('div', { class: 'bignote' },
-      'All figures represent global data centers broadly, not AI specifically. AI-focused data centers are growing significantly faster than overall data center consumption (IEA, 2025).'),
+      'All figures represent global data centers broadly, not AI specifically. Electricity consumption from AI-focused data centers is growing much faster than overall data center electricity consumption (IEA, 2025).'),
 
     h('p', { class: 'footnote' }, 'numbers are illustrative')
   );
