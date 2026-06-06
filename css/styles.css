@@ -1,0 +1,486 @@
+/* =====================================================
+   Data Center Energy Usage — styles.css
+   Fonts loaded via Google Fonts in index.html
+   ===================================================== */
+
+:root {
+  --ink: #1c1b19;
+  --paper: #f6f4ec;
+  --card: #fffdf6;
+  --grey: #d7d4c8;
+  --grey2: #e9e6db;
+  --green: #00b894;
+  --green2: #069f80;
+  --green-dk: #04795f;
+  --buy: #bdeac9;
+  --buy-ink: #0a5c2e;
+  --sell: #f3c6cf;
+  --sell-ink: #8a1f36;
+  --note: #fff2b8;
+  --shadow: 5px 5px 0 var(--ink);
+  --shadow-sm: 3px 3px 0 var(--ink);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Rubik', system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  background-image: radial-gradient(var(--grey) 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+#site { max-width: 1180px; margin: 0 auto; padding: 0 18px 90px; }
+
+/* ---------- Tab panel visibility ---------- */
+.tab-panel { display: none; }
+.tab-panel--active { display: block; }
+
+/* ---------- Masthead ---------- */
+.masthead { text-align: center; padding: 36px 10px 18px; }
+.masthead-logo { display: block; margin: 0 auto 16px; width: 56px; height: 56px; }
+.masthead .title {
+  font-family: 'Bungee', cursive;
+  font-size: clamp(26px, 5.2vw, 50px);
+  margin: 0;
+  letter-spacing: .5px;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+.masthead .subhead {
+  margin: 14px auto 0;
+  max-width: 660px;
+  font-size: clamp(14px, 1.8vw, 17px);
+  font-weight: 500;
+  opacity: .72;
+  text-wrap: pretty;
+}
+.masthead .cattabs { margin-top: 24px; }
+
+/* ---------- Tab section heading ---------- */
+.tab-section-heading {
+  font-family: 'Architects Daughter', cursive;
+  font-size: 12px;
+  text-align: center;
+  opacity: 0.45;
+  margin: 18px 0 -4px;
+  letter-spacing: 0.2px;
+  font-weight: 400;
+}
+
+/* ---------- Tabs ---------- */
+.cattabs { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.cattab {
+  font-family: 'Bungee', cursive;
+  font-size: 12px;
+  letter-spacing: .4px;
+  background: var(--card);
+  border: 3px solid var(--ink);
+  border-radius: 11px;
+  padding: 11px 16px;
+  cursor: pointer;
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+  transition: transform .08s;
+}
+.cattab:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+.cattab[aria-selected="true"] { background: var(--ink); color: var(--card); }
+
+/* ---------- Sticky green status bar ---------- */
+.balancebar {
+  position: sticky;
+  top: 10px;
+  z-index: 40;
+  margin-top: 22px;
+  background: linear-gradient(135deg, var(--green) 0%, var(--green2) 60%, var(--green-dk) 100%);
+  border: 3px solid var(--ink);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  color: #fff;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px 20px;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+.bb-left { display: flex; flex-direction: column; gap: 2px; flex: 1 1 220px; min-width: 0; }
+.bb-label {
+  font-family: 'Rubik';
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  font-size: 11.5px;
+  opacity: .82;
+}
+.bb-num {
+  font-family: 'Rubik';
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(24px, 4.4vw, 40px);
+  line-height: 1;
+  letter-spacing: -1px;
+  text-shadow: 3px 3px 0 rgba(0,0,0,.2);
+}
+.bb-num.over { color: var(--note); }
+.bb-mid { display: flex; gap: 10px; flex-wrap: wrap; }
+.stat-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--card);
+  border: 2.5px solid var(--ink);
+  border-radius: 11px;
+  padding: 7px 12px;
+  box-shadow: var(--shadow-sm);
+}
+.stat-pill span {
+  font-family: 'Rubik';
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  font-size: 10.5px;
+  color: var(--ink);
+  opacity: .55;
+}
+.stat-pill b {
+  font-family: 'Rubik';
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  font-size: 14px;
+  color: var(--green-dk);
+}
+.bb-right { display: flex; gap: 10px; margin-left: auto; }
+.btn-reset, .btn-receipt {
+  font-family: 'Bungee', cursive;
+  font-size: 11px;
+  letter-spacing: .3px;
+  border: 2.5px solid var(--ink);
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 10px 14px;
+  box-shadow: var(--shadow-sm);
+  transition: transform .07s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-reset { background: var(--sell); color: var(--sell-ink); }
+.btn-receipt { background: var(--ink); color: var(--card); }
+.btn-reset:active, .btn-receipt:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+
+/* ---------- Card grid ---------- */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(218px, 1fr)); gap: 18px; margin-top: 26px; }
+.card {
+  background: var(--card);
+  border: 3px solid var(--ink);
+  border-radius: 13px;
+  box-shadow: var(--shadow);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.card.owned { outline: 3px solid var(--green); outline-offset: -3px; }
+.ph {
+  aspect-ratio: 4/3;
+  border: 2.5px dashed var(--ink);
+  border-radius: 9px;
+  background: repeating-linear-gradient(45deg, var(--grey2) 0 11px, var(--grey) 11px 22px);
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.ph span {
+  font-family: 'Rubik';
+  font-weight: 700;
+  font-size: 10.5px;
+  letter-spacing: .6px;
+  background: var(--card);
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  padding: 4px 8px;
+  max-width: 88%;
+  text-align: center;
+  line-height: 1.2;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+.ph::before {
+  content: "IMG";
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  font-family: 'Architects Daughter', cursive;
+  font-size: 11px;
+  opacity: .55;
+}
+.ph img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 7px;
+  z-index: 2;
+}
+.card-name { font-weight: 700; font-size: 15px; line-height: 1.15; }
+.card-price {
+  font-family: 'Rubik';
+  font-weight: 800;
+  font-size: 17px;
+  color: var(--green-dk);
+  font-variant-numeric: tabular-nums;
+}
+.card.unit-gal .card-price { color: var(--ink); }
+.card-desc { margin: 0; font-size: 12px; line-height: 1.4; opacity: .62; text-wrap: pretty; }
+.buysell { display: flex; align-items: stretch; gap: 7px; margin-top: auto; }
+.buysell button {
+  font-family: 'Bungee', cursive;
+  font-size: 11px;
+  letter-spacing: .3px;
+  border: 2.5px solid var(--ink);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 9px 0;
+  flex: 1;
+  box-shadow: var(--shadow-sm);
+  transition: transform .07s;
+}
+.buysell button:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+.buysell .buy { background: var(--buy); color: var(--buy-ink); }
+.buysell .sell { background: var(--sell); color: var(--sell-ink); }
+.buysell .qty {
+  width: 58px;
+  flex: 0 0 58px;
+  text-align: center;
+  font-family: 'Rubik';
+  font-weight: 800;
+  font-size: 16px;
+  border: 2.5px solid var(--ink);
+  border-radius: 8px;
+  background: var(--paper);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+  -moz-appearance: textfield;
+}
+.buysell .qty::-webkit-outer-spin-button,
+.buysell .qty::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+/* ---------- Receipt (inside modal) ---------- */
+.receipt { background: var(--card); }
+.receipt h3 {
+  font-family: 'Bungee', cursive;
+  font-size: 14px;
+  letter-spacing: .4px;
+  margin: 0 0 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.2;
+}
+.receipt .rsub { font-family: 'Architects Daughter', cursive; font-size: 13px; opacity: .6; margin: 0 0 14px; }
+.rrows { display: flex; flex-direction: column; gap: 7px; min-height: 34px; }
+.rrow { display: flex; justify-content: space-between; gap: 10px; font-size: 14px; align-items: center; }
+.rrow-img { width: 36px; height: 36px; object-fit: cover; border-radius: 6px; border: 2px solid var(--ink); flex-shrink: 0; }
+.rrow .rname { font-weight: 600; }
+.rrow .rname small { font-weight: 500; opacity: .55; }
+.rrow .ramt { font-weight: 800; font-variant-numeric: tabular-nums; color: var(--green-dk); white-space: nowrap; }
+.receipt.unit-gal .ramt { color: var(--ink); }
+.rempty { font-family: 'Architects Daughter', cursive; font-size: 14px; opacity: .55; }
+.rtotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  border-top: 3px solid var(--ink);
+  margin-top: 14px;
+  padding-top: 12px;
+  font-family: 'Bungee', cursive;
+  font-size: 15px;
+}
+.rtotal .ramt { font-size: 18px; font-variant-numeric: tabular-nums; }
+.prog { margin-top: 14px; }
+.progbar { height: 18px; border: 2.5px solid var(--ink); border-radius: 20px; background: var(--paper); overflow: hidden; }
+.progfill {
+  height: 100%;
+  width: 0;
+  background: repeating-linear-gradient(45deg, var(--green) 0 9px, var(--green2) 9px 18px);
+  transition: width .25s;
+}
+.proglabel { font-family: 'Architects Daughter', cursive; font-size: 13px; margin-top: 6px; opacity: .78; }
+
+/* ---------- Modal ---------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: rgba(28,27,25,.55);
+  display: none;
+  place-items: center;
+  padding: 20px;
+}
+.modal-overlay.open { display: grid; }
+.modal {
+  position: relative;
+  background: var(--card);
+  border: 3px solid var(--ink);
+  border-radius: 18px;
+  box-shadow: 7px 7px 0 var(--ink);
+  width: min(460px, 100%);
+  max-height: 86vh;
+  overflow: auto;
+  padding: 26px 22px 22px;
+}
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 13px;
+  width: 34px;
+  height: 34px;
+  border: 2.5px solid var(--ink);
+  border-radius: 9px;
+  background: var(--paper);
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+.modal-close:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+.share { margin-top: 20px; border-top: 3px dashed var(--ink); padding-top: 16px; }
+.share-label { font-family: 'Architects Daughter', cursive; font-size: 14px; opacity: .7; display: block; margin-bottom: 10px; }
+.share-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.share-btn {
+  flex: 1 1 calc(50% - 5px);
+  font-family: 'Bungee', cursive;
+  font-size: 11px;
+  letter-spacing: .3px;
+  border: 2.5px solid var(--ink);
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 11px 12px;
+  box-shadow: var(--shadow-sm);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform .07s;
+}
+.share-btn.x      { background: var(--ink); }
+.share-btn.fb     { background: #3556a4; }
+.share-btn.reddit { background: #FF4500; }
+.share-btn.dl     { background: var(--green-dk); }
+.share-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+
+/* ---------- Sources ---------- */
+.sources { max-width: 760px; margin: 18px auto 0; }
+.sources .src-head { font-family: 'Bungee', cursive; font-size: clamp(18px, 3vw, 26px); margin: 0 0 6px; }
+.sources .src-lead { font-size: 15px; opacity: .72; font-weight: 500; margin: 0 0 22px; text-wrap: pretty; }
+.srcitem {
+  background: var(--card);
+  border: 3px solid var(--ink);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  padding: 15px 17px;
+  margin-bottom: 14px;
+}
+.srcitem .stat { font-family: 'Bungee', cursive; font-size: 15px; color: var(--green-dk); margin: 0 0 5px; }
+.srcitem p { margin: 0; font-size: 14px; line-height: 1.5; }
+.srcitem a { color: var(--green-dk); font-weight: 700; word-break: break-word; }
+.srcitem .note { font-style: italic; opacity: .7; font-size: 13px; margin-top: 6px; }
+.calc {
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  font-variant-numeric: tabular-nums;
+}
+.calc h4 { font-family: 'Bungee', cursive; font-size: 13px; margin: 0 0 10px; color: var(--green); letter-spacing: .4px; }
+.calc .crow {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  font-size: 13.5px;
+  padding: 5px 0;
+  border-bottom: 1px dashed rgba(246,244,236,.25);
+}
+.calc .crow:last-child { border-bottom: 0; }
+.calc .crow b { color: #fff; }
+.bignote {
+  background: var(--note);
+  border: 3px dashed var(--ink);
+  border-radius: 12px;
+  padding: 15px 17px;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+.footnote { font-family: 'Architects Daughter', cursive; text-align: center; opacity: .5; font-size: 13px; margin: 50px 0 0; }
+
+/* ---------- Cards disclaimer ---------- */
+.cards-disclaimer {
+  font-family: 'Architects Daughter', cursive;
+  font-size: 12px;
+  text-align: center;
+  opacity: 0.45;
+  margin: 14px 0 0;
+  line-height: 1.5;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  max-width: 1180px;
+  margin: 48px auto 0;
+  padding: 22px 18px 48px;
+  border-top: 3px dashed var(--grey);
+  text-align: center;
+}
+.site-footer p { font-size: 13px; margin: 6px 0; opacity: 0.6; line-height: 1.5; }
+.site-footer .footer-desc {
+  font-family: 'Architects Daughter', cursive;
+  font-size: 13px;
+  max-width: 620px;
+  margin: 10px auto 0;
+  line-height: 1.6;
+}
+.site-footer a { color: var(--green-dk); font-weight: 700; text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
+.footer-email-section { max-width: 620px; margin: 0 auto 24px; }
+.footer-ck-wrap { width: 100%; }
+
+/* ---------- Mobile responsive ---------- */
+@media (max-width: 640px) {
+  #site { padding: 0 12px 60px; }
+
+  .balancebar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    top: 6px;
+  }
+  .bb-right { margin-left: 0; width: 100%; }
+  .bb-right .btn-reset, .bb-right .btn-receipt { flex: 1; justify-content: center; }
+
+  .bb-mid { width: 100%; }
+  .stat-pill { flex: 1; justify-content: center; }
+
+  .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+
+  .share-btns { flex-direction: column; }
+  .share-btn { flex: none; }
+
+  .calc .crow { flex-direction: column; gap: 2px; }
+  .calc .crow b { font-size: 12px; }
+}
+
+@media (max-width: 400px) {
+  .grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .buysell .qty { width: 44px; flex: 0 0 44px; font-size: 14px; }
+}

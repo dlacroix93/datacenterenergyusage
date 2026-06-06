@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Original bundle file (not needed for deployment)
+*.standalone.html
+Data Center Energy Usage (standalone).html
+
+# Editor
+.vscode/
+.idea/
+
+# Claude Code
+.claude/

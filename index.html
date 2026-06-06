@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Primary SEO -->
+  <title>Data Center Energy Usage — How Much Electricity Do Data Centers Use?</title>
+  <meta name="description" content="AI data centers burn $169 million in electricity every single day. See what that money could actually buy — from Big Macs to cruise ships. Spend it yourself.">
+  <link rel="canonical" href="https://www.datacenterenergyusage.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://www.datacenterenergyusage.com/">
+  <meta property="og:title"       content="Data Center Energy Usage — How Much Electricity Do Data Centers Use?">
+  <meta property="og:description" content="Data centers spend $169 million per day on electricity globally. See what that money could buy instead.">
+  <meta property="og:image"       content="https://www.datacenterenergyusage.com/images/og-image.jpg">
+  <meta property="og:image:width" content="1730">
+  <meta property="og:image:height" content="909">
+  <meta property="og:site_name"   content="Data Center Energy Usage">
+  <meta property="og:locale"      content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Data Center Energy Usage — How Much Electricity Do Data Centers Use?">
+  <meta name="twitter:description" content="Data centers spend $169 million per day on electricity globally. See what that money could buy instead.">
+  <meta name="twitter:image"       content="https://www.datacenterenergyusage.com/images/og-image.jpg">
+
+  <!-- Structured Data: WebApplication + Dataset -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://www.datacenterenergyusage.com/#webapp",
+        "name": "Data Center Energy Usage",
+        "description": "Interactive visualization of global data center electricity and water consumption. Explore what the $61.8 billion annual electricity bill could buy in real-world terms.",
+        "url": "https://www.datacenterenergyusage.com",
+        "applicationCategory": "DataVisualization",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "creator": {
+          "@type": "WebSite",
+          "name": "Data Center Energy Usage",
+          "url": "https://www.datacenterenergyusage.com"
+        }
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://www.datacenterenergyusage.com/#dataset",
+        "name": "Global Data Center Energy & Water Consumption 2025",
+        "description": "Global data center electricity consumption (485 TWh, IEA 2025) and water usage (163.9 billion gallons/year, EESI) with derived cost calculations at US commercial electricity rates.",
+        "url": "https://www.datacenterenergyusage.com",
+        "creator": {
+          "@type": "WebSite",
+          "name": "Data Center Energy Usage",
+          "url": "https://www.datacenterenergyusage.com"
+        },
+        "temporalCoverage": "2025",
+        "spatialCoverage": "Global",
+        "license": "https://creativecommons.org/licenses/by/4.0/",
+        "citation": [
+          "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary",
+          "https://www.eesi.org/articles/view/data-centers-and-water-consumption",
+          "https://www.eia.gov/electricity/sales_revenue_price/pdf/table_4.pdf"
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7Q77RVQBCE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7Q77RVQBCE');
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Bungee&family=Rubik:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <noscript>
+    <div style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#f6f4ec;font-family:system-ui,sans-serif;text-align:center;padding:24px;">
+      <p style="font-size:16px;color:#1c1b19;max-width:400px;">
+        This interactive tool requires JavaScript to run.<br>
+        Please enable JavaScript in your browser settings.
+      </p>
+    </div>
+  </noscript>
+
+  <!--
+    All interactive content (tabs, cards, receipt, balance bar) is
+    injected into #site by js/main.js. All three tab panels are built
+    on page load and toggled with CSS — content stays in the DOM for
+    search engine crawlers.
+  -->
+  <div id="site"></div>
+
+  <script defer src="js/main.js"></script>
+</body>
+</html>
