@@ -454,6 +454,8 @@ a { color: inherit; }
 .site-footer a:hover { text-decoration: underline; }
 .footer-email-section { max-width: 620px; margin: 0 auto 24px; }
 .footer-ck-wrap { width: 100%; }
+.footer-bmac { text-align: center; margin: 0 auto 20px; }
+.footer-bmac img { display: inline-block; }
 
 /* ---------- Mobile responsive ---------- */
 @media (max-width: 640px) {

@@ -799,6 +799,16 @@ function buildFooter() {
     h('div', { class: 'footer-email-section' },
       ckWrap
     ),
+    h('div', { class: 'footer-bmac' },
+      h('a', { href: 'https://www.buymeacoffee.com/datacenterenergyusage', target: '_blank', rel: 'noopener' },
+        h('img', {
+          src: 'https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png',
+          alt: 'Buy Me A Coffee',
+          width: '174',
+          height: '49'
+        })
+      )
+    ),
     h('p', null,
       '© 2026 datacenterenergyusage.com · ',
       h('a', {
